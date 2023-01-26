@@ -1,0 +1,16 @@
+.squares {
+  display: flex;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+}
+
+.square-dark {
+  background-color: var(--dark);
+}
+
+.square-light {
+  background-color: var(--light);
+}

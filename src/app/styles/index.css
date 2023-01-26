@@ -1,0 +1,10 @@
+@import url("./base.css");
+@import url("./squares.css");
+
+:root {
+  --bg: hsl(60, 70%, 90%);
+  --ff: Ubuntu, sans-serif;
+
+  --light: hsl(60, 45%, 88%);
+  --dark: hsl(67, 56%, 53%);
+}
