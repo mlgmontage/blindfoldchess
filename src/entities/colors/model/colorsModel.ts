@@ -26,5 +26,5 @@ const colorsModel = createSlice({
 
 export const pointsSelector = (state: RootState) => state.points;
 
-export const {} = colorsModel.actions;
+export const { incrementError, incrementSuccess } = colorsModel.actions;
 export const colorsReducer = colorsModel.reducer;

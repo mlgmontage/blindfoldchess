@@ -1,28 +1,45 @@
-import { pointsSelector } from "entities/colors/model/colorsModel";
+import {
+  incrementError,
+  incrementSuccess,
+  pointsSelector,
+} from "entities/colors";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { getSquare, showSquare } from "shared/functions";
+import { useDispatch, useSelector } from "react-redux";
+import { checkColor, getSquare, showSquare } from "shared/functions";
 
 const Home = () => {
+  const dispatch = useDispatch();
   const points = useSelector(pointsSelector);
-  const [square, setSquare] = useState<number[]>([]);
+  const [square, setSquare] = useState<number[]>([0, 0]);
 
   useEffect(() => {
-    setSquare(getSquare());
     const press = (ev: KeyboardEvent) => {
+      const color = checkColor(square);
+      console.warn(showSquare(square), square, color ? "dark" : "light");
+
       if (ev.key === "a") {
         // dark
-        setSquare(getSquare());
+        if (color === true) {
+          dispatch(incrementSuccess());
+        } else {
+          dispatch(incrementError());
+        }
       }
       if (ev.key === "o") {
         // light
-        setSquare(getSquare());
+        if (color === false) {
+          dispatch(incrementSuccess());
+        } else {
+          dispatch(incrementError());
+        }
       }
+
+      setSquare(getSquare());
     };
 
     document.addEventListener("keypress", press);
     return () => document.removeEventListener("keypress", press);
-  }, []);
+  }, [square]);
 
   return (
     <div>
