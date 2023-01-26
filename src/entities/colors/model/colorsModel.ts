@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "app/store";
 
 type Points = {
   success: number;
@@ -22,6 +23,8 @@ const colorsModel = createSlice({
     },
   },
 });
+
+export const pointsSelector = (state: RootState) => state.points;
 
 export const {} = colorsModel.actions;
 export const colorsReducer = colorsModel.reducer;

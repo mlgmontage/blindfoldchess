@@ -1,9 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
+import { colorsReducer } from "entities/colors/model/colorsModel";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    points: colorsReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
