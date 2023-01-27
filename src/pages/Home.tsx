@@ -15,9 +15,10 @@ const Home = () => {
   useEffect(() => {
     const press = (ev: KeyboardEvent) => {
       const color = checkColor(square);
+
       console.warn(showSquare(square), square, color ? "dark" : "light");
 
-      if (ev.key === "a") {
+      if (ev.key === "a" || ev.key === " ") {
         // dark
         if (color === true) {
           dispatch(incrementSuccess());
@@ -25,7 +26,7 @@ const Home = () => {
           dispatch(incrementError());
         }
       }
-      if (ev.key === "o") {
+      if (ev.key === "o" || ev.key === "Enter") {
         // light
         if (color === false) {
           dispatch(incrementSuccess());
@@ -54,6 +55,9 @@ const Home = () => {
         <h2>
           {points.success}/{points.error}
         </h2>
+        <small>
+          Press space or "a" to chose dark, and Enter or "o" to chose light
+        </small>
       </center>
     </div>
   );
